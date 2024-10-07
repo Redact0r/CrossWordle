@@ -72,7 +72,7 @@ function registerKeyboardEvents() {
 
 function registerClickEvents() {
   document.body.onclick = (e) => {
-    //set currentRow and currentCol state
+    if ((e.target.id && !e.target.id.includes("box")) || !e.target.id) return;
     const prevRow = state.currentRow;
     const prevCol = state.currentCol;
 
@@ -127,7 +127,6 @@ function getCurrentWord(orientation) {
     word = state.grid[state.currentGrid].reduce((prev, curr) => prev + curr);
   }
 
-  console.log(word);
   return word;
 }
 
